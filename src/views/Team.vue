@@ -19,8 +19,12 @@
             </v-card-text>
             <v-card-actions>
               <v-btn text color="grey">
-                <v-icon small left>mdi-message</v-icon>
-                <span>message</span>
+                <v-icon small left>mdi-pencil</v-icon>
+                <span>edit</span>
+              </v-btn>
+              <v-btn text color="grey">
+                <v-icon small left>mdi-delete</v-icon>
+                <span>delete</span>
               </v-btn>
             </v-card-actions>
           </v-card>

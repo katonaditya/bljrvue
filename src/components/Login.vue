@@ -35,6 +35,40 @@
             <v-btn @click="handleLogin()" type="submit" color="black white--text" rounded>Login</v-btn>
           </v-card-actions>
         </v-card>
+
+        <v-card class="elevation-12">
+          <v-toolbar color="black" dark flat>
+            <v-toolbar-title>Register</v-toolbar-title>
+            <v-spacer />
+          </v-toolbar>
+
+          <v-card-text>
+            <v-form @submit.prevent="handleRegister()">
+              <v-text-field
+                color="red"
+                rounded
+                label="Username"
+                v-model="username2"
+                prepend-icon="mdi-account-circle"
+                type="text"
+              />
+
+              <v-text-field
+                rounded
+                :type="showPassword ? 'text':'password'"
+                label="Password"
+                v-model="password2"
+                prepend-icon="mdi-lock"
+                :append-icon="!showPassword ? 'mdi-eye':'mdi-eye-off'"
+                @click:append="showPassword = !showPassword"
+              />
+            </v-form>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer />
+            <v-btn @click="handleRegister()" type="submit" color="black white--text" rounded>Register</v-btn>
+          </v-card-actions>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -49,16 +83,22 @@ export default {
       showLogin: true,
       showPassword: false,
       username: "",
-      password: ""
+      password: "",
+      username2: "",
+      password2: "",
     };
   },
   methods: {
+    handleRegister () {
+      this.register({ username: this.username2, password: this.password2 });
+    },
     handleLogin() {
       console.log('meow-- handleLogin() trigerred');
       this.login({ username: this.username, password: this.password });
     },
     // kirim data login ke authentication.js 
-    ...mapMutations("authentication", ["login"])
+    ...mapMutations("authentication", ["login"]),
+    ...mapMutations("authentication", ["register"])
   }
 };
 </script>
